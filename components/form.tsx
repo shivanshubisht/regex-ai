@@ -56,7 +56,7 @@ const Form = () => {
         <input
           name='prompt'
           type='text'
-          placeholder='generate regex for'
+          placeholder='email, phone number, etc.'
           className='w-full rounded-md bg-slate-400 dark:placeholder-slate-300 dark:bg-slate-800 px-2 py-5 outline-none placeholder-slate-700'
           ref={inputRef}
           required
@@ -65,7 +65,7 @@ const Form = () => {
           type='submit'
           className='mt-4 w-full rounded-md bg-slate-300 dark:bg-slate-700 px-8 py-2.5 text-base dark:hover:bg-gray-800 focus:outline-none focus:ring-1 focus:ring-zinc-600 disabled:cursor-not-allowed disabled:opacity-50'
         >
-          Done
+          Generate
         </button>
 
         <div>{response}</div>

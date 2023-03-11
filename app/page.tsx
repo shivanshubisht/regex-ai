@@ -11,7 +11,7 @@ export default function Home() {
         </p>
       </div>
       <div>
-        <h2 className='text-2xl pt-12 pb-3'>Regex Generator</h2>
+        <h2 className='text-2xl pt-12 pb-3'>Generate Regex for</h2>
         <Form />
       </div>
     </div>

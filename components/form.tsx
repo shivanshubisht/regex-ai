@@ -1,10 +1,13 @@
 'use client'
 import { useRef, useState } from 'react'
+import { Icons } from './icons'
+import { Button } from './ui/button'
 
 const Form = () => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [response, setResponse] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [hasCopied, setHasCopied] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -45,9 +48,14 @@ const Form = () => {
       currentResponse = [...currentResponse, chunkValue]
       setResponse(currentResponse)
     }
-    // breaks text indent on refresh due to streaming
-    // localStorage.setItem('response', JSON.stringify(currentResponse));
     setIsLoading(false)
+  }
+
+  const handleCopy = () => {
+    if (!response.length) return
+    const textToCopy = response.join('')
+    navigator.clipboard.writeText(textToCopy)
+    setHasCopied(true)
   }
 
   return (
@@ -67,9 +75,13 @@ const Form = () => {
         >
           Generate
         </button>
-
-        <div>{response}</div>
       </form>
+      <div className='w-full rounded-md bg-slate-400 dark:placeholder-slate-300 dark:bg-slate-800 px-2 py-5 outline-none placeholder-slate-700 flex flex-row justify-between mt-4'>
+        <code className='text-xl'>{response.join('')}</code>
+        <Button variant='ghost' size='sm' onClick={handleCopy}>
+          {hasCopied ? <Icons.check /> : <Icons.copy />}
+        </Button>
+      </div>
     </>
   )
 }

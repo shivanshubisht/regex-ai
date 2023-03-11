@@ -3,6 +3,7 @@ import { Inter as FontSans } from 'next/font/google'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { ThemeProvider } from '@/components/theme-provider'
 import { cn } from '@/lib/utils'
+import { SiteHeader } from '@/components/site-header'
 
 export const metadata = {
   title: 'Create Next App',
@@ -22,19 +23,20 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body
-        className={cn(
-          'min-h-screen bg-white font-sans text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-50',
-          fontSans.variable
-        )}
-      >
-        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          <div className='min-h-screen flex flex-col container flex-1'>
+      <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+        <body
+          className={cn(
+            'min-h-screen bg-white font-sans text-slate-900 antialiased dark:bg-gradient-to-b from-[#191919] to-[#15162c] dark:text-slate-50 flex flex-col items-center',
+            fontSans.variable
+          )}
+        >
+          <main className='min-h-screen flex flex-col items-center'>
+            <SiteHeader />
             {children}
-          </div>
+          </main>
           <TailwindIndicator />
-        </ThemeProvider>
-      </body>
+        </body>
+      </ThemeProvider>
     </html>
   )
 }

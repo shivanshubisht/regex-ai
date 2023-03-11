@@ -76,7 +76,7 @@ const Form = () => {
           Generate
         </button>
       </form>
-      <div className='w-full rounded-md bg-slate-400 dark:placeholder-slate-300 dark:bg-slate-800 px-2 py-5 outline-none placeholder-slate-700 flex flex-row justify-between mt-4'>
+      <div className='w-full rounded-md bg-slate-400 dark:placeholder-slate-300 dark:bg-slate-800 px-2 py-4 outline-none placeholder-slate-700 flex flex-row justify-between mt-4'>
         <code className='text-xl'>{response.join('')}</code>
         <Button variant='ghost' size='sm' onClick={handleCopy}>
           {hasCopied ? <Icons.check /> : <Icons.copy />}
